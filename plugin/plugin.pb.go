@@ -14,9 +14,9 @@ It has these top-level messages:
 */
 package google_protobuf_compiler
 
-import proto "github.com/c4pt0r/protorpc/proto"
+import proto "github.com/c4pt0r/proto"
 import math "math"
-import google_protobuf "github.com/c4pt0r/protorpc/protoc-gen-go/descriptor"
+import google_protobuf "github.com/c4pt0r/protoc-gen-go/descriptor"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal

@@ -10,8 +10,8 @@ import (
 	"strings"
 	"text/template"
 
-	descriptor "github.com/c4pt0r/protorpc/protoc-gen-go/descriptor"
-	generator "github.com/c4pt0r/protorpc/protoc-gen-go/generator"
+	descriptor "github.com/c4pt0r/protoc-gen-go/descriptor"
+	generator "github.com/c4pt0r/protoc-gen-go/generator"
 )
 
 // option go_generic_services = ???; // defaut is true
@@ -45,7 +45,7 @@ func (p *servicePlugin) GenerateImports(file *generator.FileDescriptor) {
 		p.P(`import "net"`)
 		p.P(`import "net/rpc"`)
 		p.P(`import "time"`)
-		p.P(`import protorpc "github.com/c4pt0r/protorpc"`)
+		p.P(`import protorpc "github.com/c4pt0r"`)
 	}
 }
 

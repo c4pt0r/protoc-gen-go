@@ -43,8 +43,8 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/c4pt0r/protorpc/proto"
-	"github.com/c4pt0r/protorpc/protoc-gen-go/generator"
+	"github.com/c4pt0r/proto"
+	"github.com/c4pt0r/protoc-gen-go/generator"
 )
 
 func main() {

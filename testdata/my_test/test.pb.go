@@ -18,7 +18,7 @@ It has these top-level messages:
 */
 package my_test
 
-import proto "github.com/c4pt0r/protorpc/proto"
+import proto "github.com/c4pt0r/proto"
 import math "math"
 
 // discarding unused import multi2 "multi/multi1.pb"

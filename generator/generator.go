@@ -50,10 +50,10 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/c4pt0r/protorpc/proto"
+	"github.com/c4pt0r/proto"
 
-	"github.com/c4pt0r/protorpc/protoc-gen-go/descriptor"
-	plugin "github.com/c4pt0r/protorpc/protoc-gen-go/plugin"
+	"github.com/c4pt0r/protoc-gen-go/descriptor"
+	plugin "github.com/c4pt0r/protoc-gen-go/plugin"
 )
 
 // A Plugin provides functionality to add to the output during Go code generation,
@@ -1115,7 +1115,7 @@ func (g *Generator) generateImports() {
 	// do, which is tricky when there's a plugin, just import it and
 	// reference it later. The same argument applies to the math package,
 	// for handling bit patterns for floating-point numbers.
-	g.P("import " + g.Pkg["proto"] + " " + strconv.Quote(g.ImportPrefix+"github.com/c4pt0r/protorpc/proto"))
+	g.P("import " + g.Pkg["proto"] + " " + strconv.Quote(g.ImportPrefix+"github.com/c4pt0r/proto"))
 	g.P("import " + g.Pkg["math"] + ` "math"`)
 	for i, s := range g.file.Dependency {
 		fd := g.fileByName(s)

@@ -9,8 +9,8 @@ import (
 	"strings"
 	"text/template"
 
-	descriptor "github.com/c4pt0r/protorpc/protoc-gen-go/descriptor"
-	generator "github.com/c4pt0r/protorpc/protoc-gen-go/generator"
+	descriptor "github.com/c4pt0r/protoc-gen-go/descriptor"
+	generator "github.com/c4pt0r/protoc-gen-go/generator"
 )
 
 // optimizePlugin produce the proto.Marshaler and proto.Unmarshaler interface.

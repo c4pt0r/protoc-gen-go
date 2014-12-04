@@ -29,7 +29,7 @@ It has these top-level messages:
 */
 package descriptor
 
-import proto "github.com/c4pt0r/protorpc/proto"
+import proto "github.com/c4pt0r/proto"
 import math "math"
 
 // Reference imports to suppress errors if they are not otherwise used.

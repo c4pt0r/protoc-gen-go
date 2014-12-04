@@ -40,7 +40,7 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/c4pt0r/protorpc/proto"
+	"github.com/c4pt0r/proto"
 	base "extension_base.pb"
 	user "extension_user.pb"
 )
