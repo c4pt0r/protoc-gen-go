@@ -45,7 +45,7 @@ func (p *servicePlugin) GenerateImports(file *generator.FileDescriptor) {
 		p.P(`import "net"`)
 		p.P(`import "net/rpc"`)
 		p.P(`import "time"`)
-		p.P(`import protorpc "github.com/c4pt0r"`)
+		p.P(`import protorpc "wpbrpc"`)
 	}
 }
 
@@ -293,7 +293,7 @@ func Dial{{.ServiceName}}Timeout(network, addr string,
 `
 	const clientMethodTmpl = `
 func (c *{{.ServiceName}}Client) {{.MethodName}}(in *{{.ArgsType}}, out *{{.ReplyType}}) error {
-	return c.Call("{{.ServiceRegisterName}}.{{.MethodName}}", in, out)
+	return c.Call("{{.ServiceRegisterName}}:{{.MethodOriginName}}", in, out)
 }`
 
 	// gen client method list
@@ -301,14 +301,15 @@ func (c *{{.ServiceName}}Client) {{.MethodName}}(in *{{.ArgsType}}, out *{{.Repl
 	for _, m := range svc.Method {
 		out := bytes.NewBuffer([]byte{})
 		t := template.Must(template.New("").Parse(clientMethodTmpl))
-		t.Execute(out, &struct{ ServiceName, ServiceRegisterName, MethodName, ArgsType, ReplyType string }{
+		t.Execute(out, &struct{ ServiceName, ServiceRegisterName, MethodName, MethodOriginName, ArgsType, ReplyType string }{
 			ServiceName: generator.CamelCase(svc.GetName()),
 			ServiceRegisterName: p.makeServiceRegisterName(
-				file, file.GetPackage(), generator.CamelCase(svc.GetName()),
+				file, file.GetPackage(), svc.GetName(),
 			),
-			MethodName: generator.CamelCase(m.GetName()),
-			ArgsType:   p.TypeName(p.ObjectNamed(m.GetInputType())),
-			ReplyType:  p.TypeName(p.ObjectNamed(m.GetOutputType())),
+			MethodName:       generator.CamelCase(m.GetName()),
+			MethodOriginName: m.GetName(),
+			ArgsType:         p.TypeName(p.ObjectNamed(m.GetInputType())),
+			ReplyType:        p.TypeName(p.ObjectNamed(m.GetOutputType())),
 		})
 		methodList += out.String()
 	}
